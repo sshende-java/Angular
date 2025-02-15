@@ -1,5 +1,5 @@
 <div>
-    <button>
+    <button (click)="onSelectUser()">
         <img [src]="imagePath" > <!--Property binding [src]     imagePath is getter function-->
         <span>{{selectedUser.name}}</span>  <!--String interpolation {{}}-->
     </button>

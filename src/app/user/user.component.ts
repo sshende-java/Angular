@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import {DUMMY_USERS} from '../dummy-users'
+import { DUMMY_USERS } from '../dummy-users'
 
 const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
 
@@ -12,9 +12,16 @@ const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
   styleUrl: './user.component.css'
 })
 export class UserComponent {
+
   selectedUser = DUMMY_USERS[randomIndex];
 
-  get imagePath(){    //this is a getter funcion
-    return 'assets/users/'+this.selectedUser.avatar
+  get imagePath() {    //this is a property getter
+    return 'assets/users/' + this.selectedUser.avatar
+  }
+
+  onSelectUser(){     //method
+    const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
+    console.log("clicked!");
+    this.selectedUser = DUMMY_USERS[randomIndex];
   }
 }
