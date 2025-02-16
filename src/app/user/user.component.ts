@@ -1,8 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { DUMMY_USERS } from '../dummy-users'
-
-const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
 
 @Component({
   selector: 'app-user',
@@ -13,15 +10,23 @@ const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
 })
 export class UserComponent {
 
-  selectedUser = DUMMY_USERS[randomIndex];
+  randomCustomValue = 1;
 
-  get imagePath() {    //this is a property getter
-    return 'assets/users/' + this.selectedUser.avatar
+  @Input({ required: true }) avatar!: string;     //Allows this component to accept input .this input property will be used in html like [avatar]
+  @Input({ required: true }) id!: string;         //accept input
+  @Input() name!: string;                         //accept input
+
+  @Output() select = new EventEmitter();        //Emitting custom event
+
+
+
+
+  get imagePath() {     //this is a property getter
+    return 'assets/users/' + this.avatar;
   }
 
-  onSelectUser(){     //method
-    const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
-    console.log("clicked!");
-    this.selectedUser = DUMMY_USERS[randomIndex];
+  onSelectUser() {     //method
+    debugger;
+    this.select.emit(this.id);    //u got this value from @Input now emit this value which clicked.
   }
 }

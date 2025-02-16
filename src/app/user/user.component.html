@@ -1,6 +1,6 @@
 <div>
-    <button (click)="onSelectUser()">
-        <img [src]="imagePath" > <!--Property binding [src]     imagePath is getter function-->
-        <span>{{selectedUser.name}}</span>  <!--String interpolation {{}}-->
+    <button id="{{randomCustomValue}}" (click)="onSelectUser()">
+        <img [src]="imagePath" [alt]="name">            <!--Property binding [src]     imagePath is getter function-->
+        <span>{{ name }}</span>                         <!--String interpolation {{}}-->
     </button>
 </div>
